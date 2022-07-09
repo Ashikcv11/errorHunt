@@ -40,20 +40,25 @@ router.post('/api/',async(req,res)=>{
 router.get('/api/',async(req,res)=>{
     res.header("Access-Control-Allow-Origin","*")
     res.header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE")
-    try{
-        let allTest=await testmonial.find();
-        res.json({
-            success:1,
-            message:'testimonial listed succesfuly',
-            item:allTest
-        })
-    }
-    catch(err){
-        res.json({
-        success:0,
-        message:'error occured while testing'+err
-        })
-    }
+
+    testmonial.find()
+    .then(function(testbody){
+        res.send(testbody)
+    })
+    // try{
+    //     let allTest=await testmonial.find();
+    //     res.json({
+    //         success:1,
+    //         message:'testimonial listed succesfuly',
+    //         item:allTest
+    //     })
+    // }
+    // catch(err){
+    //     res.json({
+    //     success:0,
+    //     message:'error occured while testing'+err
+    //     })
+    // }
 })
 
 
